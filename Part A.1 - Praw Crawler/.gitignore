@@ -1,0 +1,5 @@
+test_*.py
+reddit_batch_*
+Assets/Images
+processed_ids.json
+logs.txt

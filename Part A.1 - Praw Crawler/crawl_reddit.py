@@ -52,7 +52,7 @@ print(f"We have currently {len(processed_ids)} posts.")
 print(f"Crawling for random posts from reddit.")
 
 # File size threshold (in bytes, 10 MB)
-FILE_SIZE_THRESHOLD = 2 * 1024 * 1024  # 10 MB
+FILE_SIZE_THRESHOLD = 10 * 1024 * 1024  # 10 MB
 
 # Function to check the size of the file
 def get_file_size(file_path):
@@ -86,22 +86,40 @@ for i in range(max_posts_to_save):
                     "id": post.id,
                     "title": post.title,
                     "author": post.author.name if post.author else 'Unknown',
-                    "url": post.url,
                     "body": post.selftext,
                     "comments": [],
+                    "subreddit": post.subreddit.display_name,
+                    "flair_text": post.link_flair_text,
+                    "permalink": post.permalink,
+                    "url": post.url,
+                    "created_utc": post.created_utc,
                     "score": post.score,
-                    "upvotes": post.ups,
-                    "downvotes": post.downs,
+                    "upvote_ratio": post.upvote_ratio,
                     "num_comments": post.num_comments,
+                    "is_self": post.is_self,
+                    "over_18": post.over_18,
+                    "spoiler": post.spoiler,
+                    "locked": post.locked,
+                    "stickied": post.stickied,
                 }
 
                 # Fetching comments for the post
                 post.comments.replace_more(limit=0)
                 for comment in post.comments.list():
                     comment_data = {
+                        "id": comment.id,
                         "author": comment.author.name if comment.author else 'Unknown',
                         "body": comment.body,
+                        "subreddit": comment.subreddit.display_name,
+                        "parent_id": comment.parent_id,
+                        "permalink": comment.permalink,
+                        "author_flair_text": comment.author_flair_text,
+                        "created_utc": comment.created_utc,
                         "score": comment.score,
+                        "is_submitter": comment.is_submitter,
+                        "stickied": comment.stickied,
+                        "edited": comment.edited,
+                        "distinguished": comment.distinguished,
                     }
                     post_data["comments"].append(comment_data)
                 

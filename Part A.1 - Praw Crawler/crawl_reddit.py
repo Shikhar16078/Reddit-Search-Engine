@@ -4,6 +4,7 @@ import logging
 import os
 import time
 import requests
+import sys
 
 #region Logging Configuration
 logging.basicConfig(
@@ -35,11 +36,16 @@ reddit = praw.Reddit(
 )
 
 # List of subreddits to scrape (Sequential Order)
-subreddits_list = [
-    'technology', 'Android', 'iOS', 'gadgets', 'programming', 
-    'learnprogramming', 'webdev', 'Python', 'cybersecurity', 'techsupport', 
-    'DevOps', 'DataScience', 'MachineLearning', 'ArtificialIntelligence', 'Linux'
-]
+if(len(sys.argv) > 1):
+    subreddits_list = sys.argv[1].split()
+    print("I will crawl from your given list of topics.")
+else:
+    subreddits_list = [
+        'technology', 'Android', 'iOS', 'gadgets', 'programming', 
+        'learnprogramming', 'webdev', 'Python', 'cybersecurity', 'techsupport', 
+        'DevOps', 'DataScience', 'MachineLearning', 'ArtificialIntelligence', 'Linux'
+    ]
+    print("No topic provided, scrawling defaults.")
 
 # 'Computers', 'TechNews', 'BigData', 'Blockchain', 'cryptocurrency'
 # 'Apple', 'Windows10', 'VirtualReality', '3Dprinting', 'IoT', 

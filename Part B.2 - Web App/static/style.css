@@ -1,0 +1,60 @@
+/* Global */
+*{
+    margin: 0;
+    padding: 0;
+}
+
+:root{
+    --red-color: #DC3545;
+}
+
+
+/* Nav Bar */
+.nav-title{
+    color: white;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: clamp(1.2rem, 1.5vw, 1rem);
+}
+
+.nav-title:hover{
+    color: white;
+    transform: translateY(-2px);
+    transition: transform 0.2s ease;
+}
+
+/* Main */
+.app-title{
+    font-weight: 400;
+    color: var(--red-color);
+    font-family: sans-serif;
+    border: 2px solid var(--red-color);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.app-title:hover{
+    cursor: pointer;
+    display: inline-block;
+    transform: translateY(-3px);
+    transition: transform 0.2s ease;
+}
+
+.animate-slide-up {
+    display: inline-block;
+    transform: translateY(-3px);
+    transition: transform 0.2s ease;
+}
+
+
+
+/* Footer */
+.footer{
+    position: fixed;
+    height: 140px;
+    background-color: red;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin-bottom: 0px;
+}

@@ -1,4 +1,3 @@
 {
-    "indexDir": "./Part B.2 - Web App/utils/pylucene_indexes",
-    "libsPath": "./Part B.2 - Web App/dependencies"
+    "indexDir": "./utils/pylucene_indexes"
 }

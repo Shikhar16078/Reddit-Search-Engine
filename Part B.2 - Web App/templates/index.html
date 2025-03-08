@@ -40,10 +40,11 @@
                 </div>
                 <!-- Right side: Max Results label, number input, and Search button -->
                 <div class="d-flex align-items-center">
-                    <label for="top_k" class="me-2 mb-0 fs-5">Max Results </label>
+                    <label for="top_k" class="me-2 mb-0 fs-5">Top</label>
                     <input type="number" name="top_k" id="top_k" class="form-control me-2" placeholder="Top K" value="10" min="1"
-                        style="width:100px;">
-                    <button type="submit" class="btn btn-primary">Search</button>
+                        style="width:65px;">
+                    <label for="top_k" class="me-2 mb-0 fs-5">Results</label>
+                    <button type="submit" class="btn btn-primary ms-5">Search</button>
                 </div>
             </div>
 
@@ -56,7 +57,7 @@
         <!-- Results Section -->
         <div class="result">
             {% if results and results.results %}
-            <h5 class="mt-4 ms-1">Results: {{ results.totalHits }} hits</h5>
+            <h5 class="mt-4 ms-1">Results: <strong>{{ results.totalHits }} hits</strong></h5>
             <div class="row">
                 {% for result in results.results %}
                 <div class="col-md-6 mb-3">
@@ -111,5 +112,4 @@
         crossorigin="anonymous"></script>
     <script src="{{ url_for('static', filename='script.js') }}" defer></script>
 </body>
-
 </html>

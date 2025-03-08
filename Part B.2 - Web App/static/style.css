@@ -94,3 +94,7 @@
 .result{
     min-height: 80vh;
 }
+
+.result >h5{
+    color: var(--red-color);
+}

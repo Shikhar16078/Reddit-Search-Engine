@@ -1,42 +1,47 @@
+import os
 import subprocess
 import json
 from flask import Flask, render_template, request
+import platform
 
 app = Flask(__name__)
 
 def search_lucene(query, top_k):
-    # Path to your config JSON file (adjust as needed)
-    config_path = r"C:\Users\shikh\Desktop\IR Project\Reddit-Search-Engine\Part B.2 - Web App\utils\config.json"
-    
-    # Directory containing your LuceneSearch.class file
-    class_dir = r"C:\Users\shikh\Desktop\IR Project\Reddit-Search-Engine\Part B.2 - Web App"
-    
-    lucene_search_class = "LuceneSearch"  # If not in any package
-    
-    # Build the command to run your Java program.
-    # The -cp argument now includes the class directory and your libs folder.
+    # Determine OS for correct classpath separator
+    separator = ";" if platform.system() == "Windows" else ":"
+
+    # Get the base directory dynamically (directory where this script is located)
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+    # Dependencies folder where Lucene & JSON-simple JARs are located
+    dependencies_dir = os.path.join(BASE_DIR, "dependencies")
+
+    # Java class to execute
+    lucene_search_class = "LuceneSearch"
+
+    # Construct the Java command
     command = [
         "java",
         "-cp",
-        f"{class_dir};C:\\lucene\\libs\\*",
+        f"{BASE_DIR}{separator}{dependencies_dir}/*",
         lucene_search_class,
-        config_path,
         str(top_k),
-        query  # Pass the entire query as a single argument
+        query  # Query as a single argument
     ]
-    
-    print("Executing command:", " ".join(command)) # Debug
 
-    
+    print("Executing command:", " ".join(command))  # Debugging output
+
     try:
         # Run the Java program and capture output
         result = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        
         if result.returncode != 0:
             return {"error": "Error executing Java program", "details": result.stderr}
-        
-        # Parse the JSON output from the Java program
+
+        # Parse JSON output from Java program
         output = result.stdout.strip()
         return json.loads(output)
+    
     except Exception as e:
         return {"error": "Exception occurred", "details": str(e)}
 
@@ -46,15 +51,16 @@ def index():
     results = {}
     if request.method == 'POST':
         query = request.form['query']
-        top_k = request.form.get('top_k', 10)  # top_k value from the UI (default: 10)
+        top_k = request.form.get('top_k', 10)  # Default: 10
         index_type = request.form['index_type']
         
         if index_type == 'lucene':
             results = search_lucene(query, top_k)
         elif index_type == 'bert':
             results = {"message": "BERT search is not implemented yet"}
-    
+
     return render_template('index.html', results=results)
+
 
 if __name__ == '__main__':
     app.run(debug=True)

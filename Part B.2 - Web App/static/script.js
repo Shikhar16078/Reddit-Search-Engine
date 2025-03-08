@@ -25,3 +25,15 @@ window.addEventListener("load", function() {
     }
   });
 });
+
+
+$(document).ready(function() {
+            $(".nav-title").hover(
+                function() {
+                    $(".navbar").removeClass("bg-danger").addClass("bg-dark");
+                },
+                function() {
+                    $(".navbar").removeClass("bg-dark").addClass("bg-danger");
+                }
+            );
+        });

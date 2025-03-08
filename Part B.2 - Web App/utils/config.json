@@ -1,4 +1,4 @@
 {
-    "indexDir": "C:/Users/shikh/Desktop/IR Project/reddit_lucene_index/reddit_lucene_index",
-    "libsPath": "C:/lucene/libs"
+    "indexDir": "./Part B.2 - Web App/utils/pylucene_indexes",
+    "libsPath": "./Part B.2 - Web App/dependencies"
 }

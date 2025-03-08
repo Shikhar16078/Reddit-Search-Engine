@@ -63,9 +63,11 @@
                     <div class="card h-100">
                         <!-- Card Header: Title always visible -->
                         <div class="card-header py-2">
-                            <h5 class="card-title fixed-title mb-0" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                                {{ result.Title }}
-                            </h5>
+                            <a href="{{ result.URL }}" target="_blank" class="title-url">
+                                <h5 class="card-title fixed-title mb-0" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                    {{ result.Title }}
+                                </h5>
+                            </a>
                         </div>
                         <ul class="list-group list-group-flush">
                             <!-- Score always visible -->

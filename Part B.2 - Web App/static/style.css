@@ -50,6 +50,10 @@
     min-height: 25px;
 }
 
+.title-url{
+    text-decoration: none;
+}
+
 /* Collapsible body shows up to 250px by default */
 .collapsible-body {
     max-height: 100px;

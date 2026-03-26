@@ -1,7 +1,8 @@
 # Reddit Search Engine 🔍
 
-A modular search system designed to compare traditional information retrieval with LAG and an LLM powered by BERT on Reddit data.
+## 👀 Preview
 
+![demo](/Part%20B.2%20-%20Web%20App/media/demo/pylucene.png)
 ---
 
 ## 🚀 Overview
@@ -13,7 +14,7 @@ The project supports two search modes:
 - **PyLucene based search** for traditional keyword and index-driven retrieval
 - **BERT based search** for semantic, meaning-aware retrieval
 
-This setup helped us compare speed, behavior, and retrieval quality across both approaches.
+This setup helped us compare behavior, and retrieval quality across both approaches.
 
 ---
 

@@ -2,7 +2,8 @@
 
 ## 👀 Preview
 
-![demo](/Part%20B.2%20-%20Web%20App/media/demo/pylucene.png)
+[Reddit Search Engine - Demo](https://github.com/user-attachments/assets/4279e58d-62dd-4f19-ab21-06fb73df5e67)
+
 ---
 
 ## 🚀 Overview
